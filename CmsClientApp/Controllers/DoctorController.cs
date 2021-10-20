@@ -101,7 +101,7 @@ namespace CmsClientApp.Controllers
                 }
             }
             _notyf.Success("Successfully Updated.", 3);
-            return RedirectToAction("GetAllDoctors");
+            return RedirectToAction("GetAllDoctor");
         }
 
         //Delete a doctor
