@@ -3,11 +3,13 @@
 @{
     ViewData["Title"] = "GetAllUsers";
 }
+@Html.Partial("_Navbarmenu")
 
+<h4>List of Users</h4>
 <p>
-    <a asp-action="Create"><h1>Add Doctor</h1></a>
+    <a asp-action="Create"><h4>Register New User</h4></a>
 </p>
-<h4>List of Doctors</h4>
+
 <table class="table">
     <thead>
         <tr>
@@ -44,7 +46,6 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                 </td>
             </tr>
