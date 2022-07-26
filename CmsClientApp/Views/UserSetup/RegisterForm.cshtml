@@ -1,0 +1,208 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CmsClientApp.ViewRegModels.RegisterForm
+
+@{
+    ViewData["Title"] = "RegisterForm";
+
+
+}
+
+<!------ Include the above in your HEAD tag ---------->
+<header>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <style>
+    </style>
+</header>
+<style>
+    .navigation li {
+        display: inline-block;
+    }
+
+    .shape {
+        padding: 20px;
+        margin-top:20px;
+        margin-left: 50px;
+        width:620px;
+        
+        
+    }
+    .signup-text {
+        color: rgb(2, 131, 211);
+        font-weight:bold;
+       
+    }
+    .register-button {
+        background-color: rgb(2, 131, 211);
+        text-align:center;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding:10px;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+        transition: box-shadow 0.15s;
+    }
+
+    .register-button:hover {
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+    }
+</style>
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="navbar-brand" href="#">
+                    <img src="~/images/Stone-Clinic-Logo.png" width="50" height="50">
+                    The Stone Clinic
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-collapse collapse justify-content-end">
+        <ul class="navigation">
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-success" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<body>
+    <div class="row register shape">
+        <div class="col-md-9 register-right">
+            <div class="panel-body card shape">
+                <div class="tab-content" id="myTabContent">
+                    <h3 class="text-center text-dark"><span class="signup-text">Sign up</span></h3>
+                    <form asp-action="Create" id="form">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Firstname" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Firstname" class="form-control" placeholder="First name" />
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Username" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Username" class="form-control" placeholder="User name" />
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Password" class="form-control" placeholder="Password" type="password" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="SecurityQuestion" class="control-label"></label><span class="text-danger">*</span>
+                                    <select asp-for="SecurityQuestion" class="form-control">
+                                        <option class="hidden" selected disabled>Please select your security question</option>
+                                        <option>What is the name of the first school?</option>
+                                        <option>What is the name of a college you attended?</option>
+                                        <option>What is your favourite destionation?</option>
+                                        <option>What is the name of your first pet?</option>
+                                    </select>
+                                    <span asp-validation-for="SecurityQuestion" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Lastname" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Lastname" class="form-control" placeholder="Last name" />
+                                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Email" class="form-control" placeholder="Email" type="email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ConfirmPassword" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword" type="password" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Answer" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Answer" class="form-control" placeholder="Enter your answer" />
+                                    <span asp-validation-for="Answer" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Captcha</label><span class="text-danger">*</span>
+                                    <div class="input-group">
+                                        <span class="captcha input-group-prepend"><i>@ViewBag.captcha1 + @ViewBag.captcha2 =</i></span>
+                                        <span><input id="captcha" asp-for="Captcha" class="form-control box-size" style="margin-right:8px;" /></span>
+                                        <span><a href="https://localhost:44338/User/Create" class="fa fa-redo-alt fa-2x input-group-append"></a></span>
+                                        <span asp-validation-for="Captcha" class="text-danger"></span>
+                                    </div>
+                                    <h5 class="text-danger">@ViewBag.captchaError </h5>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="resultCaptcha" class="control-label" hidden></label>
+                                    <input asp-for="resultCaptcha" class="form-control" value="@ViewBag.resultCaptcha" hidden />
+                                    <span asp-validation-for="resultCaptcha" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    @*<input type="submit" value="Register" class="btn-primary" />*@
+                                    <button type="submit" class="register-button">Register</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    @if (ViewBag.EmailSentMessage != null)
+                    {
+                        <div class="bg-success">
+                            <label>@ViewBag.EmailSentMessage</label>
+                        </div>
+                    }
+                </div>
+            </div>
+            </div>
+        </div>
+
+</body>
+
+
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            const i = document.querySelector('#captcha');
+            const f = document.querySelector('#form');
+            i.addEventListener('keydown', function (event) {
+                if (event.keyCode === 13) {
+                    f.submit();
+                }
+
+            });
+            document.addEventListener('keydown', function (event) {
+                if (event.keyCode === 13 && event.target.nodeName === 'INPUT' || event.target.nodeName === 'SELECT') {
+                    event.preventDefault();
+                    var form = event.target.form;
+                    var index = Array.prototype.indexOf.call(form, event.target);
+                    form.elements[index + 1].focus();
+
+
+                }
+            });
+
+
+        });
+
+
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

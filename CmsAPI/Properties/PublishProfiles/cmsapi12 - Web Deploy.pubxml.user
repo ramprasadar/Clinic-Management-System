@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALKzLbdgsZUy4CUSQtr2/gQAAAAACAAAAAAAQZgAAAAEAACAAAACJ5igm17kINqLJymMP7PxRAnCC+gY/sisqu3kFtSGqIAAAAAAOgAAAAAIAACAAAACa0yLa0LZWx+8R7N9cLDeHfOOAjHfxgJOo9oz9Ix5YLIAAAAAf4iIcT5QPWi9AzI2W0WqK+5VQP1uVzDXPD3skvaGmTGM0h7kRMJNVpYaUsRcu/MNbU3Z3PcDngKLslbOGkw7NckTkQP/+RSNf2OCJj12I3PZUkKB66Dr8QpvMkJmNV4sTDmove4ovwTR4AIjFbuLToai8mqGiQhor58dAaxmjPUAAAABR8ITL6jUNar6pVjAHCWArcXO8MzVkzQW4IzsZkMoMcOmXnaktml5DyNalUDLU25iKmHtgDnKDH/aU0yUyl+Fb</EncryptedPassword>
+    <History>False|2022-03-11T14:37:40.2510954Z;False|2022-03-11T20:04:58.4663267+05:30;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="CmsContext">
+      <Value>Data Source=tcp:cmsdb123.database.windows.net,1433%3bInitial Catalog=CmsDB2%3bUser Id=cmsdb%40cmsdb123%3bPassword=Admin%40123</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="CmsAPI.Data.CmsContext">
+      <Value>Data Source=tcp:cmsdb123.database.windows.net,1433%3bInitial Catalog=CmsDB2%3bUser Id=cmsdb%40cmsdb123%3bPassword=Admin%40123</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

@@ -14,12 +14,8 @@ namespace CmsClientApp.Controllers
 {
     public class PatientController : Controller
     {
-        private readonly INotyfService _notyf;
-        public PatientController(INotyfService notyf)
-        {
-            _notyf = notyf;
-        }
-        string Baseurl = "https://localhost:44372/";
+        
+        string Baseurl = "https://cmsapi12.azurewebsites.net/";
         //Get all the List of patients
         public async Task<IActionResult> GetAllPatients()
         {
@@ -64,7 +60,7 @@ namespace CmsClientApp.Controllers
                     pobj = JsonConvert.DeserializeObject<Patient>(apiResponse);
                 }
             }
-            _notyf.Success("Successfully Added.", 3);
+            
             return RedirectToAction("GetAllPatients");
         }
         //Edit the details of the patient
@@ -73,7 +69,7 @@ namespace CmsClientApp.Controllers
             Patient p = new Patient();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44372/api/Patients/" + id))
+                using (var response = await httpClient.GetAsync("https://cmsapi12.azurewebsites.net/api/Patients/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     p = JsonConvert.DeserializeObject<Patient>(apiResponse);
@@ -90,14 +86,14 @@ namespace CmsClientApp.Controllers
             {
                 int id = p.PatientId;
                 StringContent content1 = new StringContent(JsonConvert.SerializeObject(p), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PutAsync("https://localhost:44372/api/Patients/" + id, content1))
+                using (var response = await httpClient.PutAsync("https://cmsapi12.azurewebsites.net/api/Patients/" + id, content1))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     ViewBag.Result = "Success";
                     p1 = JsonConvert.DeserializeObject<Patient>(apiResponse);
                 }
             }
-            _notyf.Success("Successfully Updated.", 3);
+            
             return RedirectToAction("GetAllPatients");
         }
         //Delete a particular patient
@@ -108,7 +104,7 @@ namespace CmsClientApp.Controllers
             Patient p = new Patient();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44372/api/Patients/" + id))
+                using (var response = await httpClient.GetAsync("https://cmsapi12.azurewebsites.net/api/Patients/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     p = JsonConvert.DeserializeObject<Patient>(apiResponse);
@@ -124,12 +120,12 @@ namespace CmsClientApp.Controllers
             int patientid = Convert.ToInt32(TempData["PatientId"]);
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.DeleteAsync("https://localhost:44372/api/Patients/" + patientid))
+                using (var response = await httpClient.DeleteAsync("https://cmsapi12.azurewebsites.net/api/Patients/" + patientid))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
-            _notyf.Success("Successfully Deleted.", 3);
+           
             return RedirectToAction("GetAllPatients");
         }
     }

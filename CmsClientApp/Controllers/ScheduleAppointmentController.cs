@@ -18,12 +18,8 @@ namespace CmsClient.Controllers
 {
     public class ScheduleAppointmentController : Controller
     {
-        private readonly INotyfService _notyf;
-        public ScheduleAppointmentController(INotyfService notyf)
-        {
-            _notyf = notyf;
-        }
-        string Baseurl = "https://localhost:44372/";
+       
+        string Baseurl = "https://cmsapi12.azurewebsites.net/";
         //Get all the Appointments
         public async Task<IActionResult> ViewAppointments()
         {
@@ -129,7 +125,7 @@ namespace CmsClient.Controllers
                 }
             }
 
-            _notyf.Success("Appointment booked successfully.", 3);
+           
             return RedirectToAction("ViewAppointments");
         }
 
@@ -224,7 +220,7 @@ namespace CmsClient.Controllers
             Schedule s = new Schedule();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44372/api/Schedules/" + id))
+                using (var response = await httpClient.GetAsync("https://cmsapi12.azurewebsites.net/api/Schedules/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     s = JsonConvert.DeserializeObject<Schedule>(apiResponse);
@@ -240,12 +236,12 @@ namespace CmsClient.Controllers
             int appid = Convert.ToInt32(TempData["AppointmentId"]);
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.DeleteAsync("https://localhost:44372/api/Schedules/" + appid))
+                using (var response = await httpClient.DeleteAsync("https://cmsapi12.azurewebsites.net/api/Schedules/" + appid))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
-            _notyf.Success("Appointment Cancelled successfully.", 3);
+            
             return RedirectToAction("ViewAppointments");
         }
     }

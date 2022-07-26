@@ -14,12 +14,8 @@ namespace CmsClientApp.Controllers
 {
     public class DoctorController : Controller
     {
-        private readonly INotyfService _notyf;
-        public DoctorController(INotyfService notyf)
-        {
-            _notyf = notyf;
-        }
-        string Baseurl = "https://localhost:44372/";
+       
+        string Baseurl = "https://cmsapi12.azurewebsites.net/";
 
         //Get all the List of doctors
         public async Task<IActionResult> GetAllDoctor()
@@ -67,7 +63,7 @@ namespace CmsClientApp.Controllers
                     Dobj = JsonConvert.DeserializeObject<Doctor>(apiResponse);
                 }
             }
-            _notyf.Success("Successfully Added.", 3);
+           
             return RedirectToAction("GetAllDoctor");
         }
         //Edit the details of the doctor
@@ -76,7 +72,7 @@ namespace CmsClientApp.Controllers
             Doctor d = new Doctor();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44372/api/Doctors/" + id))
+                using (var response = await httpClient.GetAsync("https://cmsapi12.azurewebsites.net/api/Doctors/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     d = JsonConvert.DeserializeObject<Doctor>(apiResponse);
@@ -93,14 +89,14 @@ namespace CmsClientApp.Controllers
             {
                 int id = d.DoctorId;
                 StringContent content1 = new StringContent(JsonConvert.SerializeObject(d), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PutAsync("https://localhost:44372/api/Doctors/" + id, content1))
+                using (var response = await httpClient.PutAsync("https://cmsapi12.azurewebsites.net/api/Doctors/" + id, content1))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     ViewBag.Result = "Success";
                     d1 = JsonConvert.DeserializeObject<Doctor>(apiResponse);
                 }
             }
-            _notyf.Success("Successfully Updated.", 3);
+           
             return RedirectToAction("GetAllDoctor");
         }
 
@@ -112,7 +108,7 @@ namespace CmsClientApp.Controllers
             Doctor d = new Doctor();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44372/api/Doctors/" + id))
+                using (var response = await httpClient.GetAsync("https://cmsapi12.azurewebsites.net/api/Doctors/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     d = JsonConvert.DeserializeObject<Doctor>(apiResponse);
@@ -128,12 +124,12 @@ namespace CmsClientApp.Controllers
             int doctorid = Convert.ToInt32(TempData["DoctorId"]);
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.DeleteAsync("https://localhost:44372/api/Doctors/" + doctorid))
+                using (var response = await httpClient.DeleteAsync("https://cmsapi12.azurewebsites.net/api/Doctors/" + doctorid))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
-            _notyf.Success("Successfully Deleted.", 3);
+           
             return RedirectToAction("GetAllDoctors");
         }
     }

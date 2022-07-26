@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CmsAPI.Data;
 using CmsAPI.Model;
+using CmsAPI.Helper;
 
 namespace CmsAPI.Controllers
 {
@@ -28,8 +29,25 @@ namespace CmsAPI.Controllers
             return await _context.UserSetup.ToListAsync();
         }
 
+        [Route("[action]/{Email}")]
+        [HttpGet]
+        public UserSetup GetUserSetupbyEmail(string Email)
+        {
+            UserSetup userSetup = (from i in _context.UserSetup.ToList()
+                                   where i.EmailId == Email
+                                   select i).FirstOrDefault();
+
+            if (userSetup == null)
+            {
+                return userSetup;
+            }
+
+            return userSetup;
+        }
+
         // GET: api/UserSetups/5
-        [HttpGet("{Username}")]
+        [Route("[action]/{Username}")]
+        [HttpGet]
         public async Task<ActionResult<UserSetup>> GetUserSetup(string Username)
         {
             var userSetup = await _context.UserSetup.FindAsync(Username);
@@ -38,7 +56,7 @@ namespace CmsAPI.Controllers
             {
                 return NotFound();
             }
-            
+
             return userSetup;
         }
         // PUT: api/UserSetups/5
@@ -46,58 +64,63 @@ namespace CmsAPI.Controllers
         [HttpPut("{Username}")]
         public async Task<IActionResult> PutUserSetup(string Username, UserSetup userSetup)
         {
-            if (Username == userSetup.Password)
+            UserSetup l = userSetup;
+            var PasswordHash = EncodePassword.GetMd5Hash(l.Password);
+            userSetup.Password = PasswordHash;
+            userSetup.ConfirmPassword = PasswordHash;
+            foreach (var i in _context.UserSetup.ToList())
             {
-                return BadRequest();
-            }
-
-            _context.Entry(userSetup).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserSetupExists(Username))
+                if (i.Username == Username)
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+                    i.Firstname = userSetup.Firstname;
+                    i.Lastname = userSetup.Lastname;
+                    i.Password = userSetup.Password;
+                    i.ConfirmPassword = userSetup.ConfirmPassword;
+                    i.SecurityCode = userSetup.SecurityCode;
+                    i.Status = userSetup.Status;
+                    i.EmailId = userSetup.EmailId;
+                    i.CreationDate = userSetup.CreationDate;
+                    _context.SaveChanges();
+                    return Ok(200);
+
+                }
+
+            }
+            return BadRequest();
         }
 
         // POST: api/UserSetups
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserSetup>> PostUserSetup(UserSetup userSetup)
+        public async Task<string> PostUserSetup(UserSetup userSetup)
         {
-            _context.UserSetup.Add(userSetup);
+            UserSetup l = userSetup;
+            var PasswordHash = EncodePassword.GetMd5Hash(l.Password);
+            userSetup.Password = PasswordHash;
+            userSetup.ConfirmPassword = PasswordHash;
             try
             {
+                _context.UserSetup.Add(userSetup);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (Exception e)
             {
-                if (UserSetupExists(userSetup.Username))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                //if (UserSetupExists(userSetup.Username))
+                //{
+                //    return Conflict();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
+                return e.ToString();
             }
 
-            return CreatedAtAction("GetUserSetup", new { Username = userSetup.Username }, userSetup);
+            return "succsses";
         }
         // DELETE: api/UserSetups/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{Username}")]
         public async Task<IActionResult> DeleteUserSetup(string Username)
         {
             var userSetup = await _context.UserSetup.FindAsync(Username);

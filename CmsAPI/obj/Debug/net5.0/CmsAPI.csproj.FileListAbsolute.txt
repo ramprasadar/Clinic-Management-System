@@ -5,7 +5,6 @@ C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\CmsAPI.deps.json
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\CmsAPI.runtimeconfig.json
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\CmsAPI.runtimeconfig.dev.json
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\CmsAPI.dll
-C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\ref\CmsAPI.dll
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\CmsAPI.pdb
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\Humanizer.dll
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
@@ -125,7 +124,6 @@ C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\CmsAPI.csproj.CoreC
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\CmsAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\CmsAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\staticwebassets\CmsAPI.StaticWebAssets.Manifest.cache
-C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\staticwebassets\CmsAPI.StaticWebAssets.xml
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\scopedcss\bundle\CmsAPI.styles.css
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\CmsAPI.RazorTargetAssemblyInfo.cache
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\CmsAPI.csproj.CopyComplete
@@ -136,3 +134,5 @@ C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\CmsAPI.genruntimeco
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\bin\Debug\net5.0\CmsAPI.StaticWebAssets.xml
+C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\obj\Debug\net5.0\refint\CmsAPI.dll

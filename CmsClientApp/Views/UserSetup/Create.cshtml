@@ -1,40 +1,81 @@
-﻿@model CmsClientApp.Models.UserSetup
+﻿@model CmsClientApp.Models.UserRegistration
 
 @{
     ViewData["Title"] = "Create";
 }
+<head>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<style>
+    .navigation li {
+        display: inline-block;
+    }
+</style>
 
-<h4>Register</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    @*<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="~/images/Stone-Clinic-Logo.png" width="50" height="50">
+                The Stone Clinic
+            </a>
+        </nav>*@
+    <!--<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="#">
+                        <img src="~/images/Stone-Clinic-Logo.png" width="50" height="50">
+                        The Stone Clinic
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse justify-content-end">
+            <ul class="navigation">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-success" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="center">
+        <h1>Signup</h1>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Firstname" class="control-label"></label>
-                <input asp-for="Firstname" class="form-control" />
+                <input asp-for="Firstname" class="form-control" required="required" placeholder="Firstname" />
                 <span asp-validation-for="Firstname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Lastname" class="control-label"></label>
-                <input asp-for="Lastname" class="form-control" />
+                <input asp-for="Lastname" class="form-control" required="required" placeholder="Lastname" />
                 <span asp-validation-for="Lastname" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" required="required" placeholder="Username" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailId" class="control-label"></label>
+                <input asp-for="EmailId" class="form-control" required="required" placeholder="EmailId" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" required="required" placeholder="Password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success" />
             </div>
+            <div class="signup_link">
+                Go back to <a asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+            </div>
         </form>
-    </div>
-</div>
+    </div>-->
 
 

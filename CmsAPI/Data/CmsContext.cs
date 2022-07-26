@@ -18,9 +18,9 @@ namespace CmsAPI.Data
         {
 
         }
-        public DbSet<CmsAPI.Model.UserSetup> UserSetup { get; set; }
-        public DbSet<CmsAPI.Model.Doctor> Doctor { get; set; }
-        public DbSet<CmsAPI.Model.Patient> Patient { get; set; }
-        public DbSet<CmsAPI.Model.Schedule> Schedule { get; set; }
+        public DbSet<UserSetup> UserSetup { get; set; }
+        public DbSet<Doctor> Doctor { get; set; }
+        public DbSet<Patient> Patient { get; set; }
+        public DbSet<Schedule> Schedule { get; set; }
     }
 }

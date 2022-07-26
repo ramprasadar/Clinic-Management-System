@@ -26,13 +26,18 @@ namespace CmsClientApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            
             services.AddDbContext<CmsAPI.Data.CmsContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("CmsContext")));
             services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
 
+            services.AddSession(s => s.IdleTimeout = TimeSpan.FromMinutes(30));
+            services.AddDistributedMemoryCache();
             services.AddSession();
             services.AddControllersWithViews();
+#if DEBUG
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +65,7 @@ namespace CmsClientApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=Login}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -11,5 +11,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>CmsAPI.Data.CmsContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <NameOfLastUsedPublishProfile>C:\Users\RAM-1\Downloads\Project CMS\CmsAPI\Properties\PublishProfiles\cmsapi12 - Web Deploy1.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

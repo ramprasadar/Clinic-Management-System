@@ -1,13 +1,27 @@
-﻿@model IEnumerable<CmsClientApp.Models.UserSetup>
+﻿@model IEnumerable<CmsClientApp.Models.UserRegistration>
 
 @{
     ViewData["Title"] = "GetAllUsers";
 }
 @Html.Partial("_Navbarmenu")
 
-<h4>List of Users</h4>
-<p>
-    <a asp-action="Create"><h4>Register New User</h4></a>
+<head>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        h6 {
+            text-align: right;
+        }
+    </style>
+
+</head>
+<br />
+
+<h3><i style='font-size:24px' class='fas'>&#xf0c0;</i> Users Overview:</h3>
+<p>    
+    <a asp-action="Create" style="color:white;"><h6><span>&#10010;</span> Create User</h6></a>
 </p>
 
 <table class="table">
@@ -25,30 +39,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.Password)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Firstname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Lastname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  username=item.Username  }, new { @style = "color:black;" }) |
+                @Html.ActionLink("Delete", "Delete", new {  username=item.Username  }, new { @style = "color:black;" })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

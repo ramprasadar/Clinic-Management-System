@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/cmsdb123/databases/CmsDB2",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:CmsContext",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

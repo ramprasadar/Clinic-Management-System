@@ -2,7 +2,98 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<link href="~/css/style.css" rel="stylesheet" />
+<header>
+    <style>
+        .navigation li {
+            display: inline-block;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 17px;
+            color: black;
+            line-height: 1.6;
+        }
+
+        #showcase {
+            /*background-image: url('http://traversymedia.com/downloads/assets/beachshowcase.jpg');*/
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+            #showcase h1 {
+                font-size: 50px;
+                line-height: 1.2;
+            }
+
+            #showcase p {
+                font-size: 20px;
+            }
+
+            #showcase .button {
+                font-size: 18px;
+                text-decoration: none;
+                color: black;
+                border: black 1px solid;
+                padding: 10px 20px;
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+
+                #showcase .button:hover {
+                    background: white;
+                    color: black;
+                }
+
+
+
+    </style>
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="#">
+                        <img src="~/images/Stone-Clinic-Logo.png" width="50" height="50">
+                        The Stone Clinic
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse justify-content-end">
+            <ul class="navigation">
+                <li><a class="nav-link btn btn-outline-success" href="#">About</a></li>
+                <li><a class="nav-link btn btn-outline-success" href="#">Contact</a></li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-success" asp-area="" asp-controller="Login" asp-action="Login">Signin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-success" asp-area="" asp-controller="UserSetup" asp-action="Create">signup</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div id="showcase">
+        <h1>Welcome To The CMS</h1>
+        <p>CMS App is a management software for hospitals, providing clinic management software capabilities such as online booking, scheduling and invoicing in one easy-to-use platform.</p>
+        <a href="#" class="button">Read More</a>
+        </h>
+    </div>
+
+</body>

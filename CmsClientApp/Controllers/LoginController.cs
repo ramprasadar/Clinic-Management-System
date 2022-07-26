@@ -1,22 +1,22 @@
-﻿using CmsClientApp.Models;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using CmsClientApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using CmsAPI.Model;
-using CmsAPI.Data;
-
+using System.Security.Cryptography;
+using System.Text;
+using CmsClientApp.Helper;
 
 namespace CmsClientApp.Controllers
 {
     public class LoginController : Controller
-    {     
+    {
         private readonly CmsAPI.Data.CmsContext _db;
+        
         public LoginController(CmsAPI.Data.CmsContext db)
         {
             _db = db;
+           
         }
 
         [HttpGet]
@@ -24,25 +24,36 @@ namespace CmsClientApp.Controllers
         {
             return View();
         }
+
+        
         [HttpPost]
-        public IActionResult Login(CmsAPI.Model.Login l)
+        public IActionResult Login(Login l)
         {
+            var PasswordHash= EncodePassword.GetMd5Hash(l.Password);
             CmsAPI.Model.UserSetup obj = (from i in _db.UserSetup
-                        where i.Username == l.Username && i.Password == l.Password
-                        select i).FirstOrDefault();
+                                          where i.Username == l.Username && i.Password == PasswordHash/*l.Password*/
+                                          select i).FirstOrDefault();
 
             if (obj != null)
             {
+                if (obj.Password != l.Password)
+                {
+                    ModelState.AddModelError(nameof(l.ErrorMessage), "Incorrect Password");
+                    return View();
+                }
                 string username = obj.Username;
                 HttpContext.Session.SetString("username", username);
                 return RedirectToAction("Index", "Dashboard");
             }
             else
             {
-                ViewBag.errormsg = "Incorrect Username or Password";
+                ModelState.AddModelError(nameof(l.ErrorMessage), "Incorrect Username");
+                //ViewBag.errormsg = "Incorrect Username or Password";
                 return View();
             }
-            
+
         }
+
+        
     }
 }

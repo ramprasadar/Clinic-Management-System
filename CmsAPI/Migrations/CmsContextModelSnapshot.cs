@@ -120,6 +120,21 @@ namespace CmsAPI.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConfirmPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Firstname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -131,6 +146,16 @@ namespace CmsAPI.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecurityCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecurityQuestion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("Username");
 
